@@ -23,6 +23,10 @@
 # THE SOFTWARE.
 #
 
+# For background:
+# http://blog.client9.com/2008/10/type-safe-printf.html
+# http://code.google.com/p/typesafeprintf/
+
 import sys
 import re
 import string
@@ -65,12 +69,21 @@ typesmap = {
     'd': 'int',
     'i': 'int',
     'u': 'unsigned int',
+    'o': 'unsigned int',
+    'x': 'unsigned int',
+    'X': 'unsigned int',
     'ld': 'long',
     'li': 'long',
     'lu': 'unsigned long',
+    'lo': 'unsigned long',
+    'lx': 'unsigned long',
+    'lX': 'unsigned long',
     'lld': 'long long',
     'lli': 'long long',
-    'llu': 'unsigned long',
+    'llu': 'unsigned long long',
+    'llo': 'unsigned long long',
+    'llx': 'unsigned long long',
+    'llX': 'unsigned long long',
     'hd': 'short',
     'hi': 'short',
     'hhd': 'char',
