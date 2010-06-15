@@ -231,14 +231,14 @@ def extractFunctionCall1(text, fname, pos, format_pos):
         idx += 1
 
         # now extract the format string
-        # handle case where string litteral is split, e.g.
+        # handle case where string literal is split, e.g.
         # printf("a" "b") is same as printf("ab")
         #
         while idx < len(text):
-            while text[idx] != '"': idx += 1
-            if text[idx-1] == '\\':
+            while text[idx] != '"':
+                if text[idx] == '\\':
+                    idx += 1
                 idx += 1
-                continue
             idx += 1
             qend = idx
             while text[idx] in string.whitespace: idx += 1
