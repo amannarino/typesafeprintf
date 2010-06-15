@@ -45,6 +45,12 @@ class TestFormats(unittest.TestCase):
         extractFunctionCall1(sample, 'printf', 0 , 0)
         sample = 'printf ( "123456789"\n "abcedf" );'
         extractFunctionCall1(sample, 'printf', 0, 0)
+        sample = r'printf ( "123456789\\" )'
+        extractFunctionCall1(sample, 'printf', 0, 0)
+
+        sample = r'printf ( "\"" )'
+        fstart, qstart, qend = extractFunctionCall1(sample, 'printf', 0, 0)
+        self.assertEquals(r'"\""', sample[qstart:qend])
 
     def testArgs(self):
         self.assertEquals([], makeArgList(''))
@@ -98,3 +104,5 @@ class TestFormats(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+# vim:et
